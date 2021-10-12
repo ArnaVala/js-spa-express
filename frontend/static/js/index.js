@@ -39,6 +39,9 @@ const router = async () => {
   console.log(match.route.view());
 };
 
+// history api - when user goes back in browser - change view
+window.addEventListener('popstate', router);
+
 // call the router func on dom load
 document.addEventListener('DOMContentLoaded', () => {
   document.body.addEventListener('click', e => {
