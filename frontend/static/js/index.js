@@ -1,5 +1,7 @@
 //client-side entry point
 import Dashboard from './views/Dashboard.js';
+import Posts from './views/Posts.js';
+import Settings from './views/Settings.js';
 
 // history api - so page doesn't refresh - called with addEventListener 'click' on links with [data-link] on DOMContentLoad
 const navigateTo = url => {
@@ -14,8 +16,8 @@ const router = async () => {
   //define routes array
   const routes = [
     { path: "/", view: Dashboard },
-    //{ path: "/posts", view: () => console.log('viewing posts') },
-    //{ path: "/settings", view: () => console.log('viewing settings') },
+    { path: "/posts", view: Posts },
+    { path: "/settings", view: Settings}
   ];
 
   // Test each route - for match
