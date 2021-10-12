@@ -1,6 +1,13 @@
 //client-side entry point
 //console.log('works')
 
+// history api - so page doesn't refresh - called with addEventListener 'click' on links with [data-link] on DOMContentLoad
+const navigateTo = url => {
+  history.pushState(null, null, url);
+  router();
+};
+
+
 // client-side router
 // load views in router - with async function
 const router = async () => {
@@ -29,10 +36,17 @@ const router = async () => {
       isMatch: true
     }
   }
-  console.log(match);
+  console.log(match.route.view());
 };
 
 // call the router func on dom load
 document.addEventListener('DOMContentLoaded', () => {
+  document.body.addEventListener('click', e => {
+    //no page refresh - if clicking on target(link) matches data-link - prevents default behaviour to navigate to the link - goes to the href
+    if (e.target.matches("[data-link]")) {
+      e.preventDefault();
+      navigateTo(e.target.href);
+    }
+  })
   router();
 });
