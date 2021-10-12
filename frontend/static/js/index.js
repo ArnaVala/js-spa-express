@@ -1,5 +1,5 @@
 //client-side entry point
-//console.log('works')
+import Dashboard from './views/Dashboard.js';
 
 // history api - so page doesn't refresh - called with addEventListener 'click' on links with [data-link] on DOMContentLoad
 const navigateTo = url => {
@@ -13,9 +13,9 @@ const navigateTo = url => {
 const router = async () => {
   //define routes array
   const routes = [
-    { path: "/", view: () => console.log('viewing dashboard') },
-    { path: "/posts", view: () => console.log('viewing posts') },
-    { path: "/settings", view: () => console.log('viewing settings') },
+    { path: "/", view: Dashboard },
+    //{ path: "/posts", view: () => console.log('viewing posts') },
+    //{ path: "/settings", view: () => console.log('viewing settings') },
   ];
 
   // Test each route - for match
@@ -36,6 +36,13 @@ const router = async () => {
       isMatch: true
     }
   }
+
+  // create a new instance for view
+  const view = new match.route.view();
+
+  // get the html from the views from the matching route - and inject into the element with id=app in the index.html
+  document.querySelector('#app').innerHTML = await view.getHtml();
+
   console.log(match.route.view());
 };
 

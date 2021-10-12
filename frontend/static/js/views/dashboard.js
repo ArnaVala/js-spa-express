@@ -1,7 +1,8 @@
-import AbstractView from './abstractView';
+import AbstractView from './AbstractView.js';
 
 export default class extends AbstractView {
   constructor() {
+    super();
     // set the title for this page - call from AbstractView
     this.setTitle('Dashboard')
   }
