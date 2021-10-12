@@ -22,6 +22,13 @@ const router = async () => {
   // find matching route after looping through all routes (boolean true or false)
   let match = potentialMatches.find(potentialMatch => potentialMatch.isMatch);
 
+  // if no route matches the path - then default route to dashboard (index 0 in our routes array)
+  if (!match) {
+    match = {
+      route: routes[0],
+      isMatch: true
+    }
+  }
   console.log(match);
 };
 
