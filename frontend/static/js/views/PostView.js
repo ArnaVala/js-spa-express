@@ -4,17 +4,16 @@ export default class extends AbstractView {
   constructor(params) {
     super(params);
     // set the title for this page - call from AbstractView
-    this.setTitle('Dashboard')
+    this.setTitle('Viewing Post')
   }
 
   // HTML for the dashboard view returned
   async getHtml() {
+    console.log(this.params.id);
     return `
-      <h1>Welcome to the dashboard</h1>
-      <p>This is the dashboard.</p>
-      <div>
-        <a href='/posts' data-link>View recent posts</a>
-      </div>
+      <h1>This post</h1>
+      <p>you are viewing a POST</p>
+     
     `;
   }
 }

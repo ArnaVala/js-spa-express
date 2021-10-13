@@ -1,8 +1,8 @@
 import AbstractView from './AbstractView.js';
 
 export default class extends AbstractView {
-  constructor() {
-    super();
+  constructor(params) {
+    super(params);
     // set the title for this page - call from AbstractView
     this.setTitle('Settings')
   }
